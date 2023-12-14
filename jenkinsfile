@@ -1,0 +1,17 @@
+pipeline {
+    agent any
+    
+    stages{
+        stage('Clone Git') {
+            steps {
+                git([url: '', branch: 'main'])
+            }
+        }
+        stage('Deploy server') {
+            steps {
+                sh "docker version"
+                sh "docker compose up -d"
+            }
+        }
+    }
+}
